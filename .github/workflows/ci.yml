@@ -1,8 +1,11 @@
 name: Exemplo de CI # Nome da ação
 
 on:
-  push: # Evento que irá disparar a ação
-    branches: [ main ] # Branch que irá disparar a ação
+  pull_request: # Evento que irá disparar a ação
+    branches: 
+      - main
+      - develop
+    types: [opened, reopened]
 
 jobs: # Trabalhos a serem executados
   build: # Nome ao trabalho pode ser qualquer um à sua escolha
@@ -34,4 +37,4 @@ jobs: # Trabalhos a serem executados
           java-version: '17'
 
       - name: Test with Maven
-        run: mvn test # Comando a ser
+        run: mvn test
